@@ -19,20 +19,28 @@ Libraries or frameworks
 Design
 ------
 
+### An offer
+An offer is not deleted by the client. A client can create an offer or mark it as canceled.
+If an offer is expired or canceled, the service not will show it in the result returned from the service.
+
+The expiration date of an offer is calculated with the offer creation date and the duration of the offer. 
+The expiration is implemented with the use of the database and queries on it.    
+
+
+### Layers
 The application has three layers in three different packages:
 
-### com.github.leifh.offer.rest
+#### com.github.leifh.offer.rest
 It implements the interactions between the application and a client through
 an http service (using REST). 
 
-### com.github.leifh.offer.service
+#### com.github.leifh.offer.service
 It implements some business logics and add an abstraction above the persistence.
 
-### com.github.leifh.offer.persistence
+#### com.github.leifh.offer.persistence
 It implements the low level code for interacting with the database.
 
 The three layers are wired with the macwire library using dependency injection.
-
 
 
 Testing
